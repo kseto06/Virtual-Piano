@@ -1,0 +1,25 @@
+.whitekey {
+   fill: white;
+   stroke: black;
+   stroke-width:2px;
+}
+
+.hello {
+   text-align: center;
+   font-size: 40px;
+   font-family: "Comic Sans MS", cursive;
+   font-weight: bold;
+ }
+
+.welcome {
+   text-align: center;
+   font-size: 35px;
+   font-family: "Comic Sans MS", cursive;
+ }
+
+.toCenter {
+   display: flex; 
+   justify-content: center;
+   align-items: center;
+   height: 100vh; /* Set the height of the container */
+}
