@@ -5,6 +5,20 @@
 
 //AudioContext JS Web Audio API -- creating instance
 let audioContext;
+const audioDataArray = [];
+
+var C3 = document.getElementById('C3');
+var C_sharp3 = document.getElementById('C#3');
+var D3 = document.getElementById('D3');
+var D_sharp3 = document.getElementById('D#3');
+var E3 = document.getElementById('E3');
+var F3 = document.getElementById('F3');
+var F_sharp3 = document.getElementById('F#3');
+var G3 = document.getElementById('G3');
+var G_sharp3 = document.getElementById('G#3');
+var A3 = document.getElementById('A3');
+var B_flat3 = document.getElementById('Bb3')
+var B3 = document.getElementById('B3');
 
 var C4 = document.getElementById('C4');
 var C_sharp4 = document.getElementById('C#4');
@@ -33,307 +47,278 @@ var B_flat5 = document.getElementById('Bb5')
 var B5 = document.getElementById('B5');
 var C6 = document.getElementById('C6');
 
+getFile();
+
+//3rd (Low) Octave
+C3.addEventListener("click", async function(){
+    await init();
+    await play("C3");
+});
+
+C_sharp3.addEventListener("click", async function(){
+    await init();
+    await play("Db3");
+});
+
+D3.addEventListener("click", async function(){
+    await init();
+    await play("D3");
+});
+
+D_sharp3.addEventListener("click", async function(){
+    await init();
+    await play("Eb3");
+});
+
+E3.addEventListener("click", async function(){
+    await init();
+    await play("E3");
+});
+
+F3.addEventListener("click", async function(){
+    await init();
+    await play("F3");
+});
+
+F_sharp3.addEventListener("click", async function(){
+    await init();
+    await play("Gb3");
+});
+
+G3.addEventListener("click", async function(){
+    await init();
+    await play("G3");
+});
+
+G_sharp3.addEventListener("click", async function(){
+    await init();
+    await play("Ab3");
+});
+
+A3.addEventListener("click", async function(){
+    await init();
+    await play("A3");
+});
+
+B_flat3.addEventListener("click", async function(){
+    await init();
+    await play("Bb3");
+});
+
+B3.addEventListener("click", async function(){
+    await init();
+    await play("B3");
+});
+
 //4th (Middle) Octave
 C4.addEventListener("click", async function(){
     await init();
-    await getNote("C4");
+    await play("C4");
+    console.log("C played")
 });
 
 C_sharp4.addEventListener("click", async function(){
     await init();
-    await getNote("C#4");
+    await play("Db4");
 });
 
 D4.addEventListener("click", async function(){
     await init();
-    await getNote("D4");
+    await play("D4");
 });
 
 D_sharp4.addEventListener("click", async function(){
     await init();
-    await getNote("D#4");
+    await play("Eb4");
 });
 
 E4.addEventListener("click", async function(){
     await init();
-    await getNote("E4");
+    await play("E4");
 });
 
 F4.addEventListener("click", async function(){
     await init();
-    await getNote("F4");
+    await play("F4");
 });
 
 F_sharp4.addEventListener("click", async function(){
     await init();
-    await getNote("F#4");
+    await play("Gb4");
 });
 
 G4.addEventListener("click", async function(){
     await init();
-    await getNote("G4");
+    await play("G4");
 });
 
 G_sharp4.addEventListener("click", async function(){
     await init();
-    await getNote("G#4");
+    await play("Ab4");
 });
 
 A4.addEventListener("click", async function(){
     await init();
-    await getNote("A4");
+    await play("A4");
 });
 
 B_flat4.addEventListener("click", async function(){
     await init();
-    await getNote("Bb4");
+    await play("Bb4");
 });
 
 B4.addEventListener("click", async function(){
     await init();
-    await getNote("B4");
+    await play("B4");
 });
 
 C5.addEventListener("click", async function(){
     await init();
-    await getNote("C5");
+    await play("C5");
 });
 
-//5th Octave
+//5th (High) Octave
 C_sharp5.addEventListener("click", async function(){
     await init();
-    await getNote("C#5");
+    await play("Db5");
 });
 
 D5.addEventListener("click", async function(){
     await init();
-    await getNote("D5");
+    await play("D5");
 });
 
 D_sharp5.addEventListener("click", async function(){
     await init();
-    await getNote("D#5");
+    await play("Eb5");
 });
 
 E5.addEventListener("click", async function(){
     await init();
-    await getNote("E5");
+    await play("E5");
 });
 
 F5.addEventListener("click", async function(){
     await init();
-    await getNote("F5");
+    await play("F5");
 });
 
 F_sharp5.addEventListener("click", async function(){
     await init();
-    await getNote("F#5");
+    await play("Gb5");
 });
 
 G5.addEventListener("click", async function(){
     await init();
-    await getNote("G5");
+    await play("G5");
 });
 
 G_sharp5.addEventListener("click", async function(){
     await init();
-    await getNote("G#5");
+    await play("Ab5");
 });
 
 A5.addEventListener("click", async function(){
     await init();
-    await getNote("A5");
+    await play("A5");
 });
 
 B_flat5.addEventListener("click", async function(){
     await init();
-    await getNote("Bb5");
+    await play("Bb5");
 });
 
 B5.addEventListener("click", async function(){
     await init();
-    await getNote("B5");
+    await play("B5");
 });
 
 C6.addEventListener("click", async function(){
     await init();
-    await getNote("C6");
+    await play("C6");
 });
 
-function getNote(note) {
-    init();
-
-    switch (note) {
-        case "C4":
-            getFile("C4");
-            break;
-        case "C#4":
-            getFile("Db4");
-            break;
-        case 'D4':
-            getFile("D4");
-            break;
-        case "D#4":
-            getFile("Eb4");
-            break; 
-        case 'E4':
-            getFile("E4");
-            break;
-        case 'F4':
-            getFile("F4");
-            break;  
-        case 'F#4':
-            getFile("Gb4");
-            break;
-        case 'G4':
-            getFile('G4');
-            break;
-        case "G#4":
-            getFile("Ab4");
-            break;
-        case 'A4':
-            getFile('A4');
-            break;
-        case "Bb4":
-            getFile("Bb4");
-            break;
-        case 'B4':
-            getFile('B4');
-            break;
-        case 'C5':
-            getFile('C5');
-            break;
-        case "C#5":
-            getFile("Db5");
-            break;
-        case 'D5':
-            getFile("D5");
-            break;
-        case "D#5":
-            getFile("Eb5");
-            break; 
-        case 'E5':
-            getFile("E5");
-            break;
-        case 'F5':
-            getFile("F5");
-            break;  
-        case 'F#5':
-            getFile("Gb5");
-            break;
-        case 'G5':
-            getFile('G5');
-            break;
-        case "G#5":
-            getFile("Ab5");
-            break;
-        case 'A5':
-            getFile('A5');
-            break;
-        case "Bb5":
-            getFile("Bb5");
-            break;
-        case 'B5':
-            getFile('B5');
-            break;
-        case 'C6':
-            getFile('C6');
-            break;
-        default:
-            window.alert("note doesn't exist");
-            break;
-    }
-}
-
-function play(decodedAudio) {
+function play(inputNote) {
     if (!audioContext) {
         init();
     }
-    const playSound = audioContext.createBufferSource();
-    playSound.buffer = decodedAudio;
-    playSound.connect(audioContext.destination);
-    playSound.start(audioContext.currentTime);
 
-    setTimeout(function() {
-        playSound.stop();
-    }, 1000);
+    //Search for the note in the audioDataArray:
+    const foundNote = audioDataArray.find(item => item.note === inputNote);
+
+    if (foundNote) {
+        decodedAudio = foundNote.decodedAudio;
+
+        playSound = audioContext.createBufferSource();
+        playSound.buffer = decodedAudio;
+        playSound.connect(audioContext.destination);
+        playSound.start(audioContext.currentTime);
+
+        // Calculate the duration of the note and add a small extra time for a smoother release
+        const duration = decodedAudio.duration + 0.5;
+
+        setTimeout(function() {
+            playSound.stop();
+            playSound.disconnect(); //Clear resources?
+        }, duration * 1000);
+    } else {
+        console.error(inputNote, "not found in data array");
+    }
 }
 
-function getFile(note) {
+//Get all note files
+function getFile() {
     if (!audioContext) {
         init();
     }
-    fetch("Note Files\\" + note + ".mp3")
-        .then(response => response.arrayBuffer())
-        .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-        .then(decodedAudio => {
-            play(decodedAudio);
+
+    const noteList = returnNoteList();
+    console.log(noteList);
+
+    for (let i = 0; i < noteList.length; i++) {
+        let note = noteList[i];
+        // Check if the decoded audio data for the note is already available
+        if (audioDataArray[i]) {
+            console.log(note, "already exists");
+            return;
+        }
+
+        //If note not available, fetch it:
+        fetch("Note Files\\" + note + ".mp3")
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+            .then(decodedAudio => { 
+              //Store object of the note name and its decoded audio:
+                audioDataArray[i] = {
+                    note: note,
+                    decodedAudio: decodedAudio
+                };
         })
         .catch(error => {
             console.error("Error occurred:", error);
             window.alert("Note was unable to be played");
         });
+    }
 }
 
 function init() {
     audioContext = new AudioContext();
 }
 
-function furElise() {
-    getFile("E5");
-    getFile("Db5");
-    getFile("E5");
-    getFile("Db5");
-    getFile("E5");
-    getFile("B4");
-    getFile("D5");
-    getFile("C5");
-    getFile("A4"); //& A3
+//Helper function to convert the note into an array index
+function returnNoteList() {
+    const noteNames = ["A", "Ab", "B", "Bb", "C", "D", "Db", "E", "Eb", "F", "G", "Gb"];
+    const octave = ['3', '4', '5'];
+    const noteList = [];
+
+    for (let i = 0; i < noteNames.length; i++) {
+        for (let j = 0; j < octave.length; j++) {
+            noteList.push(noteNames[i] + octave[j]);
+        }
+    }
+
+    noteList.push("C6");
+
+    return noteList;
+
 }
-
-/*
-
-function getFrequency(note, octave) {
-
-    const referenceNote = 440; //Frequency of A4
-
-    const semitones = {
-        C: -9,
-        'C#': -8,
-        Db: -8,
-        D: -7,
-        'D#': -6,
-        Eb: -6,
-        E: -5,
-        F: -4,
-        'F#': -3,
-        Gb: -3,
-        G: -2,
-        'G#': -1,
-        Ab: -1,
-        A: 0,
-        'A#': 1,
-        Bb: 1,
-        B: 2,
-        C5: 3,
-    };
-
-    const n = (octave - 4) * 12 + semitones[note.toUpperCase()];
-    const frequency = referenceNote * Math.pow(2, n / 12);
-    
-    return frequency;
-}
-
-function playNote(freq) {
-    const oscillator = audioContext.createOscillator();
-    oscillator.frequency.value = freq;
-
-    oscillator.connect(audioContext.destination);
-    oscillator.start();
-    
-    setTimeout(function() {
-        //Timer handler:
-        oscillator.stop(); 
-    }, 200); //0.5 seconds note length
-}
-*/
